@@ -1,11 +1,13 @@
 const fs = require('fs')
+const sh = require("shelljs")
 const createFeatures = (number, dir) => {
-  if (!fs.existsSync(__dirname + "/" + dir)){
-    fs.mkdirSync(__dirname + "/" + dir);
-    fs.mkdirSync(__dirname + "/" + dir + '/feature_files')
+  const currentDir = sh.pwd().stdout
+  if (!fs.existsSync(currentDir + "/" + dir)){
+    fs.mkdirSync(currentDir + "/" + dir);
+    fs.mkdirSync(currentDir + "/" + dir + '/feature_files')
   }
-  else if (!fs.existsSync(__dirname + "/" + dir + '/feature_files')){
-    fs.mkdirSync(__dirname + "/" + dir + '/features_files')
+  else if (!fs.existsSync(currentDir + "/" + dir + '/feature_files')){
+    fs.mkdirSync(currentDir + "/" + dir + '/features_files')
   }
   for (let i = 1; i <= number; i++) {
     const fileName = `feature_file_${i}.feature`

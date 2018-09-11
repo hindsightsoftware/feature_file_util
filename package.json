@@ -12,6 +12,7 @@
     "feat_gen": "./index.js"
   },
   "dependencies": {
-    "commander": "^2.18.0"
+    "commander": "^2.18.0",
+    "shelljs": "^0.8.2"
   }
 }
