@@ -1,0 +1,17 @@
+{
+  "name": "feature_file_utils",
+  "version": "1.0.0",
+  "description": "Utility for generating and handling feature files",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Matt Cooper",
+  "license": "ISC",
+  "bin": {
+    "feat_gen": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.18.0"
+  }
+}

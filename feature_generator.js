@@ -1,14 +1,13 @@
-#!/usr/bin/env node
-const fs = require(fs)
+const fs = require('fs')
 const createFeatures = (number, dir) => {
-  if (!fs.existsSync(dir)){
-    fs.mkdirSync(dir);
-    fs.mkdirSync(dir + '/feature_files')
+  if (!fs.existsSync(__dirname + "/" + dir)){
+    fs.mkdirSync(__dirname + "/" + dir);
+    fs.mkdirSync(__dirname + "/" + dir + '/feature_files')
   }
-  else (!fs.existsSync(dir + '/feature_files')){
-    fs.mkdirSync(dir + '/features_files')
+  else if (!fs.existsSync(__dirname + "/" + dir + '/feature_files')){
+    fs.mkdirSync(__dirname + "/" + dir + '/features_files')
   }
-  for (let i = 0; i <= number; i++) {
+  for (let i = 1; i <= number; i++) {
     const fileName = `feature_file_${i}.feature`
     let fileString = ''
     for (let i = 0; i <= getRandomInt(8, 20); i++) {
@@ -30,7 +29,7 @@ const createFeatures = (number, dir) => {
       }
       fileString += featureString + '\n'
     }
-    fs.writeFile(`${dir}/feature_files/${fileName}`, fileString, (err) => {  
+    fs.appendFile(`${dir}/feature_files/${fileName}`, fileString, (err) => {  
       if (err) throw err;
         console.log('Feature file saved!');
   });
