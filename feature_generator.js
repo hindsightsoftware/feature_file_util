@@ -4,11 +4,8 @@ const createFeatures = (number, dir) => {
   const currentDir = sh.pwd().stdout
   if (!fs.existsSync(currentDir + "/" + dir)){
     fs.mkdirSync(currentDir + "/" + dir);
-    fs.mkdirSync(currentDir + "/" + dir + '/feature_files')
   }
-  else if (!fs.existsSync(currentDir + "/" + dir + '/feature_files')){
-    fs.mkdirSync(currentDir + "/" + dir + '/features_files')
-  }
+  
   for (let i = 1; i <= number; i++) {
     const fileName = `feature_file_${i}.feature`
     let fileString = ''
@@ -31,7 +28,7 @@ const createFeatures = (number, dir) => {
       }
       fileString += featureString + '\n'
     }
-    fs.appendFile(`${dir}/feature_files/${fileName}`, fileString, (err) => {  
+    fs.appendFile(`${dir}/${fileName}`, fileString, (err) => {  
       if (err) throw err;
         console.log('Feature file saved!');
   });
