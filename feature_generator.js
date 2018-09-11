@@ -9,25 +9,24 @@ const createFeatures = (number, dir) => {
   for (let i = 1; i <= number; i++) {
     const fileName = `feature_file_${i}.feature`
     let fileString = ''
-    for (let i = 0; i <= getRandomInt(8, 20); i++) {
-      const featureTitleString = `Feature: ${generateRandomString()}`
-      const descriptionString = `\tA ${generateRandomString()}`
-      const tagString = `\t${generateTags()}`
-      let scenarios = []
-      for (let i = 0; i <= getRandomInt(3, 50); i++) {
-        let string = `\tScenario: ${generateRandomString()}`
-        const gWT = generateGivenWhenThen()
-        for (let line of gWT) {
-          string += `\n \t \t${line}`
-        }
-        scenarios.push(string)
+    const featureTitleString = `Feature: ${generateRandomString()}`
+    const descriptionString = `\tA ${generateRandomString()}`
+    const tagString = `\t${generateTags()}`
+    let scenarios = []
+    for (let i = 0; i <= getRandomInt(3, 50); i++) {
+      let string = `\tScenario: ${generateRandomString()}`
+      const gWT = generateGivenWhenThen()
+      for (let line of gWT) {
+        string += `\n \t \t${line}`
       }
-      let featureString = `${featureTitleString}\n${descriptionString}\n${tagString}`
-      for (let scenario of scenarios) {
-        featureString += `\n${scenario}`
-      }
-      fileString += featureString + '\n'
+      scenarios.push(string)
     }
+    let featureString = `${featureTitleString}\n${descriptionString}\n${tagString}`
+    for (let scenario of scenarios) {
+      featureString += `\n${scenario}`
+    }
+    fileString += featureString + '\n'
+    
     fs.appendFile(`${dir}/${fileName}`, fileString, (err) => {  
       if (err) throw err;
         console.log('Feature file saved!');
