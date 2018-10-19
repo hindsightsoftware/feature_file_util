@@ -7,9 +7,10 @@ const createFeatures = (number, dir) => {
   }
   
   for (let i = 1; i <= number; i++) {
-    const fileName = `feature_file_${i}.feature`
     let fileString = ''
-    const featureTitleString = `Feature: ${generateRandomString()}`
+    const featureName = generateRandomString()
+    const fileName = `${featureName}.feature`
+    const featureTitleString = `Feature: ${featureName}`
     const descriptionString = `\tA ${generateRandomString()}`
     const tagString = `\t${generateTags()}`
     let scenarios = []
